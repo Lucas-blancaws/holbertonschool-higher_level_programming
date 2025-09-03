@@ -1,7 +1,11 @@
 #!/usr/bin/python3
-for i in range(10):
-    for j in range(i + 1, 10):  # j commence à i+1, donc j > i toujours
-        if i == 8 and j == 9:
-            print(f"{i}{j}")
+a = 0
+while a <= 8:
+    b = a + 1
+    while b <= 9:
+        if a == 8 and b == 9:
+            print("{}{}".format(a, b))
         else:
-            print(f"{i}{j}, ", end="")
+            print("{}{}, ".format(a, b), end="")
+        b += 1
+    a += 1
