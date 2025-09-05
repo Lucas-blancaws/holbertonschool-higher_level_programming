@@ -10,5 +10,5 @@ if __name__ == "__main__":
         print("1 argument:")
     else:
         print(f"{argc} arguments:")
-for i, arg in enumerate(argv, start=1):
-    print(f"{i} {arg}")
+    for i, arg in enumerate(argv, start=1):
+        print(f"{i} {arg}")
