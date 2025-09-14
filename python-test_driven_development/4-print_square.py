@@ -1,22 +1,24 @@
 #!/usr/bin/python3
 """
-Module that prints a square using the character #.
+Ce module contient une fonction qui imprime un carré
+de taille #.
 """
 
 
 def print_square(size):
     """
-    Prints a square of the given size using the # character.
+    Affiche un carré de taille size avec le caractère #
 
-    Args:
-        size (int): The length of the square sides.
+    Paramètre :
+        size (int) : la taille du carré
 
-    Raises:
-        TypeError: If size is not an integer.
-        ValueError: If size is less than 0.
+    Exceptions :
+        TypeError : si size n'est pas un entier
+        ValueError : si size est négatif
     """
     if not isinstance(size, int):
         raise TypeError("size must be an integer")
+
     if size < 0:
         raise ValueError("size must be >= 0")
 
