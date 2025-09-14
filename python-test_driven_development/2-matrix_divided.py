@@ -22,7 +22,7 @@ def matrix_divided(matrix, div):
     Returns:
         New matrix with elements divided by div, rounded to 2 decimals.
         """
-  
+
     if not isinstance(div, (int, float)):
         raise TypeError("div must be a number")
     if div == 0:
@@ -40,8 +40,9 @@ def matrix_divided(matrix, div):
         for element in row:
             if not isinstance(element, (int, float)):
                 raise TypeError(
-                    "matrix must be a matrix (list of lists) of integer/floats"
-                    )
+                    "matrix must be a matrix (list of lists) "
+                    "of integers/floats"
+                )
 
     length = len(matrix[0])
     for row in matrix:
