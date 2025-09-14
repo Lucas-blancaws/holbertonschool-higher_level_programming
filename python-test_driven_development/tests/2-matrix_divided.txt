@@ -1,5 +1,6 @@
 >>> matrix_divided = __import__("2-matrix_divided").matrix_divided
 
+# ✅ Cas normaux : int et float
 >>> matrix_divided([[1, 2], [3, 4]], 2)
 [[0.5, 1.0], [1.5, 2.0]]
 
@@ -12,6 +13,7 @@
 >>> matrix_divided([[1, 2, 3], [4, 5, 6]], 3)
 [[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
 
+# ❌ Erreurs TypeError
 >>> matrix_divided([[1, 2], [3, "a"]], 2)
 Traceback (most recent call last):
     ...
@@ -32,7 +34,15 @@ Traceback (most recent call last):
     ...
 TypeError: div must be a number
 
+# ❌ Division par zéro
 >>> matrix_divided([[1, 2], [3, 4]], 0)
 Traceback (most recent call last):
     ...
 ZeroDivisionError: division by zero
+
+# ✅ Division par inf et -inf => tous les éléments deviennent 0.0
+>>> matrix_divided([[1, 2], [3, 4]], float('inf'))
+[[0.0, 0.0], [0.0, 0.0]]
+
+>>> matrix_divided([[1, 2], [3, 4]], float('-inf'))
+[[0.0, 0.0], [0.0, 0.0]]
