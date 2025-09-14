@@ -3,6 +3,8 @@
 Module 0-add_integer
 Defines a function that adds two integers.
 """
+
+
 def add_integer(a, b=98):
     """
     Additionne deux entiers.
@@ -21,5 +23,15 @@ def add_integer(a, b=98):
         raise TypeError("a must be an integer")
     if not isinstance(b, (int, float)):
         raise TypeError("b must be an integer")
+
+    if isinstance(a, float) and (
+        a == float("inf") or a == float("-inf") or a != a
+    ):
+        raise OverflowError("a is too large or not a finite number")
+
+    if isinstance(b, float) and (
+        b == float("inf") or b == float("-inf") or b != b
+    ):
+        raise OverflowError("b is too large or not a finite number")
 
     return int(a) + int(b)
