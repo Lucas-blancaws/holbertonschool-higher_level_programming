@@ -126,3 +126,26 @@ class Rectangle:
     def square(cls, size=0):
         """Return a new Rectangle instance with width == height == size"""
         return cls(size, size)
+
+
+"""
+Résumé :
+
+Classe définie : Rectangle
+
+Attributs de classe : number_of_instances, print_symbol
+
+Attributs d’instance : __width, __height
+
+Méthodes :
+
+Spéciales : __init__, __str__, __repr__, __del__
+
+Propriétés : width, height (avec leurs setters)
+
+Utilitaires : area, perimeter
+
+Avancées : bigger_or_equal (statique), square (classe)
+
+Objets : créés par Rectangle(...), représentent des rectangles concrets.
+"""

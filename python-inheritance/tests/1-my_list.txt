@@ -1,0 +1,28 @@
+#!/usr/bin/python3
+"""Test de la classe MyList"""
+
+from 1-my_list import MyList
+
+# Création d'une instance de MyList
+my_list = MyList()
+my_list.append(5)
+my_list.append(1)
+my_list.append(3)
+my_list.append(2)
+my_list.append(4)
+
+# Affichage de la liste originale
+print("Liste originale :", my_list)  # [5, 1, 3, 2, 4]
+
+# Test de print_sorted
+print("Liste triée : ", end="")
+my_list.print_sorted()               # [1, 2, 3, 4, 5]
+
+# Vérification que la liste originale n'a pas été modifiée
+print("Liste après print_sorted :", my_list)  # [5, 1, 3, 2, 4]
+
+# Test avec une autre liste
+another_list = MyList([10, 7, 8, 9])
+print("Autre liste originale :", another_list)
+print("Autre liste triée : ", end="")
+another_list.print_sorted()
