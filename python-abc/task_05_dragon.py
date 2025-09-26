@@ -14,4 +14,5 @@ class FlyMixin:
 
 
 class Dragon(SwimMixin, FlyMixin):
-    pass
+    def roar(self):
+        print("The dragon roars!")
