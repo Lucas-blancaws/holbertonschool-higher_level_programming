@@ -1,4 +1,10 @@
 #!/usr/bin/python3
+
+"""
+Module construct class shape
+"""
+
+
 from abc import ABC, abstractmethod
 import math
 
@@ -34,17 +40,28 @@ class Rectangle(Shape):
     """Rectangle shape"""
 
     def __init__(self, width, height):
+
+        """rectangle"""
+
         self.width = width
         self.height = height
 
     def area(self):
+
+        """area"""
+
         return self.width * self.height
 
     def perimeter(self):
+
+        """perimeter """
+
         return 2 * (self.width + self.height)
 
 
 def shape_info(shape):
+
     """Prints area and perimeter of any shape"""
+
     print("Area:", shape.area())
     print("Perimeter:", shape.perimeter())
