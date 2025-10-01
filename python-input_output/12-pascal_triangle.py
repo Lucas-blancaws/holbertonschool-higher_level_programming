@@ -1,3 +1,9 @@
+#!/usr/bin/pyhton3
+
+
+"""pascal"""
+
+
 def pascal_triangle(n):
 
     """Return Pascal's Triangle with n rows as a list of lists.
