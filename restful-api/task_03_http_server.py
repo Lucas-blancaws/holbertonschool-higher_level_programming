@@ -1,13 +1,11 @@
 #!/usr/bin/python3
 
-import http.server
-import socketserver
+from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
+import socketserver
 
-# Classe pour gérer les requêtes HTTP GET
 
-
-class Simple_server(http.server.BaseHTTPRequestHandler):
+class SimpleServer(http.server.BaseHTTPRequestHandler):
 
     def do_GET(self):
         # Traite les endpoints /, /data et /info
@@ -40,5 +38,5 @@ class Simple_server(http.server.BaseHTTPRequestHandler):
 
 
 PORT = 8000
-server = socketserver.TCPServer(("", PORT), Simple_server)
+server = socketserver.TCPServer(("", PORT), SimpleServer)
 server.serve_forever()
