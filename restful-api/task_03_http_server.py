@@ -5,7 +5,7 @@ import json
 import socketserver
 
 
-class SimpleServer(http.server.BaseHTTPRequestHandler):
+class SimpleServer(BaseHTTPRequestHandler):
 
     def do_GET(self):
         # Traite les endpoints /, /data et /info
@@ -38,5 +38,6 @@ class SimpleServer(http.server.BaseHTTPRequestHandler):
 
 
 PORT = 8000
-server = socketserver.TCPServer(("", PORT), SimpleServer)
-server.serve_forever()
+with socketserver.TCPServer(("", PORT), SimpleServer) as httpd:
+    print("serving at port", PORT)
+    httpd.serve_forever()
