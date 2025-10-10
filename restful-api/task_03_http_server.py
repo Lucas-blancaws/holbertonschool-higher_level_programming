@@ -1,10 +1,13 @@
 #!/usr/bin/python3
 
+""" ça marche bien """
+
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 
 
 class SimpleServer(BaseHTTPRequestHandler):
+    """subclass"""
 
     def do_GET(self):
         # Traite les endpoints /, /data et /info
@@ -21,6 +24,12 @@ class SimpleServer(BaseHTTPRequestHandler):
             data = {"name": "John", "age": 30, "city": "New York"}
             self.wfile.write(json.dumps(data).encode())
 
+        elif self.path == "/status":
+            self.send_response(200)
+            self.send_header("Content-type", "text/plain")
+            self.end_headers()
+            self.wfile.write(b"OK")
+
         elif self.path == "/info":
             info = {"version": "1.0", "description":
                     "A simple API built with http.server"}
@@ -33,11 +42,15 @@ class SimpleServer(BaseHTTPRequestHandler):
             self.send_response(404)
             self.send_header("Content-type", "text/plain")
             self.end_headers()
-            self.wfile.write("Endpoint not found".encode())
+            self.wfile.write(b"Endpoint not found")
 
 
 if __name__ == "__main__":
-    server_address = ("", 8000)
-    httpd = HTTPServer(server_address, SimpleServer)
-    print("Serveur lancé sur le port 8000...")
-    httpd.serve_forever()
+    PORT = 8000
+    server = HTTPServer(('', PORT), SimpleServer)
+    print(f'Server running on port {PORT}')
+    try:
+        server.serve_forever()
+    except KeyboardInterrupt:
+        print("\nServer stopped by user")
+        server.server_close()
