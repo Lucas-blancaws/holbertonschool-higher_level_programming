@@ -1,40 +1,36 @@
 #!/usr/bin/python3
-
-"""Flask application"""
-
-from flask import Flask
-from flask import jsonify
-from flask import request
+"""Module qui crée une API simple avec Flask"""
 
 
+from flask import Flask, jsonify, request
 app = Flask(__name__)
 
 
 @app.route("/")
 def home():
-    """Affiche un message"""
-    return ("Welcome to the Flask API!")
+    """Affiche un message d'accueil"""
+    return "Welcome to the Flask API!"
 
 
 users = {}
 
 
 @app.route("/data")
-def get_data():
-    """Return une liste de tout les noms d'user"""
-    return jsonify(users)
+def new_jsonify():
+    """Retourne une liste de tout les noms d'utilisateurs"""
+    username = list(users.keys())
+    return jsonify(username)
 
 
 @app.route("/status")
-def get_status():
+def new_status():
     """Vérifie que l'API fonctionne"""
-    return ("OK")
+    return "OK"
 
 
 @app.route("/users/<username>")
-def new_user(username):
-    """Return les données de l'user demandé si présent,
-        sinon return une erreur """
+def new_users(username):
+    """Retourne les données de l'utilisateur"""
     if username in users:
         return jsonify(users[username])
     else:
@@ -44,8 +40,9 @@ def new_user(username):
 @app.route("/add_user", methods=["POST"])
 def add_user():
     """Reçoit des données JSON, ajoute un nouvel utilisateur
-    dans un dico"""
+        dans un dictionnaire"""
     data = request.get_json()
+
     if "username" not in data:
         return jsonify({"error": "Username is required"}), 400
 
@@ -60,4 +57,4 @@ def add_user():
 
 
 if __name__ == "__main__":
-    app.run
+    app.run()
