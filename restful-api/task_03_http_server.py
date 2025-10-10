@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-""" ça marche bien """
+"""simple API using Python with the `http.server` module"""
 
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
@@ -10,12 +10,15 @@ class SimpleServer(BaseHTTPRequestHandler):
     """subclass"""
 
     def do_GET(self):
-        # Traite les endpoints /, /data et /info
-        if self.path == "/":
+        """A new do_GET method."""
+
+        print(f"Requête reçue pour : {self.path}")
+
+        if self.path == "/" or self.path == "":
             self.send_response(200)
             self.send_header("Content-type", "text/plain")
             self.end_headers()
-            self.wfile.write("Hello, this is a simple API!")
+            self.wfile.write(b"Hello, this is a simple API!")
 
         elif self.path == "/data":
             self.send_response(200)
@@ -31,12 +34,12 @@ class SimpleServer(BaseHTTPRequestHandler):
             self.wfile.write(b"OK")
 
         elif self.path == "/info":
-            info = {"version": "1.0", "description":
-                    "A simple API built with http.server"}
             self.send_response(200)
             self.send_header("Content-type", "application/json")
             self.end_headers()
-            self.wfile.write(json.dumps(info).encode())
+            self.wfile.write(
+                json.dumps({"version": "1.0", "description":
+                            "A simple API built with http.server"}).encode())
 
         else:
             self.send_response(404)
