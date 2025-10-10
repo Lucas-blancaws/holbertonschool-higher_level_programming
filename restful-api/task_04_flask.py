@@ -22,7 +22,6 @@ users = {}
 @app.route("/data")
 def get_data():
     """Return une liste de tout les noms d'user"""
-    username = list(users.keys())
     return jsonify(users)
 
 
@@ -61,4 +60,4 @@ def add_user():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5000)
+    app.run
