@@ -2,7 +2,6 @@
 
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
-import socketserver
 
 
 class SimpleServer(BaseHTTPRequestHandler):
@@ -13,13 +12,13 @@ class SimpleServer(BaseHTTPRequestHandler):
             self.send_response(200)
             self.send_header("Content-type", "text/plain")
             self.end_headers()
-            self.wfile.write("Hello, this is a simple API!".encode())
+            self.wfile.write("Hello, this is a simple API!")
 
         elif self.path == "/data":
-            data = {"name": "John", "age": 30, "city": "New York"}
             self.send_response(200)
             self.send_header("Content-type", "application/json")
             self.end_headers()
+            data = {"name": "John", "age": 30, "city": "New York"}
             self.wfile.write(json.dumps(data).encode())
 
         elif self.path == "/info":
@@ -34,10 +33,11 @@ class SimpleServer(BaseHTTPRequestHandler):
             self.send_response(404)
             self.send_header("Content-type", "text/plain")
             self.end_headers()
-            self.wfile.write("404 Not Found".encode())
+            self.wfile.write("Endpoint not found".encode())
 
 
-PORT = 8000
-with socketserver.TCPServer(("", PORT), SimpleServer) as httpd:
-    print("serving at port", PORT)
+if __name__ == "__main__":
+    server_address = ("", 8000)
+    httpd = HTTPServer(server_address, SimpleServer)
+    print("Serveur lancé sur le port 8000...")
     httpd.serve_forever()
