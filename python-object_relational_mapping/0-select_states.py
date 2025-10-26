@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""""
+"""
 Script lists all states database hbtn
 """
 import MySQLdb
