@@ -4,6 +4,7 @@
 import MySQLdb
 import sys
 
+
 if __name__ == "__main__":
     username = sys.argv[1]
     password = sys.argv[2]
@@ -16,12 +17,12 @@ if __name__ == "__main__":
         passwd=password,
         db=db_name
     )
-    cur = db.cursor()
-    cur.execute("SELECT * FROM states ORDER BY id ASC")
-    rows = cur.fetchall()
 
-    for row in rows:
+    cursor = db.cursor()
+    cursor.execute("SELECT * FROM states ORDER BY id ASC")
+
+    for row in cursor.fetchall():
         print(row)
 
-    cur.close()
+    cursor.close()
     db.close()
