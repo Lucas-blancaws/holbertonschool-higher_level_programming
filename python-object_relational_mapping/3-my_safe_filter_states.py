@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/Users/lucas/.pyenv/shims/python3
 """"
 Script lists all states database hbtn
 """

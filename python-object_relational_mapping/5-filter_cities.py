@@ -1,6 +1,6 @@
-#!/usr/bin/python3
-""""
-Script lists all states database hbtn
+#!/Users/lucas/.pyenv/shims/python3
+"""
+Script lists all cities of a state in the database hbtn_0e_4_usa
 """
 import MySQLdb
 import sys
